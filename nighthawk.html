@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nighthawk Setup Steps</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optional: Link to a CSS file for styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center; /* Center the header */
+            color: #333; /* Header color */
+            text-shadow: 2px 2px 4px red; /* Add red shadow */
+        }
+
+        .hint {
+            display: none; /* Initially hide the hint */
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .hint-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-color: yellow; /* Hint icon color */
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: green; /* Green background */
+            color: white; /* White text color */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        button:hover {
+            background-color: red; /* Change to red on hover */
+        }
+
+        /* Styles for Steps */
+        #step4, #step5, #step6, #step7 {
+            line-height: 1.6;
+        }
+        
+        #step4 h2, #step5 h2, #step6 h2, #step7 h2 {
+            margin-bottom: 15px;
+            font-size: 24px;
+            color: #333;
+        }
+        
+        #step4 p, #step5 p, #step6 p, #step7 p {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #444;
+        }
+
+        #step4 ol, #step5 ol, #step6 ol, #step7 ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        #step4 li, #step5 li, #step6 li, #step7 li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .tip {
+            color: red;
+            list-style-type: none; /* Remove default list style */
+            margin: 4px 0; /* Space around tips */
+            padding-left: 20px; /* Align bullet point */
+            position: relative; /* Position relative for absolute positioning of bullet */
+        }
+
+        .tip::before {
+            content: "•"; /* Bullet point */
+            color: yellow; /* Color of the bullet point */
+            font-weight: bold; /* Make bullet bold */
+            position: absolute; /* Position bullet */
+            left: 0; /* Align to the left */
+        }
+
+        #summary {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <h1>Nighthawk Setup Steps</h1>
+    <div id="setupContainer">
+        <div class="step" id="step1">
+            <p>Step 1: Ask your customer to download and install the Nighthawk App from the App Store for Apple devices or from the Play Store for Android devices.</p>
+            <button onclick="proceedToStep2()">Yes, Installed</button>
+            <button onclick="showTroubleshootingStep1()">How to Install</button>
+        </div>
+
+        <div id="troubleshooting1" class="hint">
+            <span class="hint-icon"></span>
+            <strong>Troubleshooting:</strong>
+            <p>Turn On the Mobile data and download the Nighthawk App from the App Store for Apple Devices and from Play Store for Android Devices. Once the download is completed install the App and Turn Off Mobile data.</p>
+        </div>
+
+        <div class="step" id="step2" style="display:none;">
+            <p>Step 2: Ask your Customer to connect the Mobile device or the Tablet to the Router's Wi-Fi Network Name and Password. Your router’s default WiFi network information is printed on the Router Label on your router. (Tips: Wifi Network Name: Netgear12, Password: Watermelon789. Username will be Netgear with 2 numbers and Password will be like 2 words with 3 numbers.)</p>
+            <button onclick="nextStep()">Yes, my device is connected to the Wi-Fi Network Name of my router</button>
+            <button onclick="showConnectionInstructions()">How will I connect my device to the router's Wi-Fi Network Name?</button>
+            <button onclick="previousStep()">Back</button> <!-- Back button for Step 2 -->
+        </div>
+
+        <div id="connectionInstructions" class="hint">
+            <span class="hint-icon"></span>
+            <strong>Connection Instructions:</strong>
+            <p>1. Turn on Wi-Fi: Make sure Wi-Fi is enabled on your mobile device. You can usually find this in the settings menu.</p>
+            <p>2. Open Wi-Fi Settings: Go to the Wi-Fi settings on your device. This is typically found under "Settings" > "Wi-Fi" or "Network & Internet."</p>
+            <p>3. Find Your Network: Look for your Netgear Wi-Fi network in the list of available networks. The network name (SSID) is usually printed on a label on the router.</p>
+            <p>4. Select the Network: Tap on your Netgear Wi-Fi network name.</p>
+            <p>5. Enter the Password: If your network is secured, you will need to enter the Wi-Fi password. This password is also typically found on the router label.</p>
+            <p>6. Connect: After entering the password, tap "Connect." Your device should now connect to the network.</p>
+            <p>7. Confirm Connection: Once connected, you should see a Wi-Fi icon in the status bar of your device.</p>
+        </div>
+
+        <div class="step" id="step3" style="display:none;">
+            <p>Step 3: Yes, my mobile or tablet is connected to the Router's WIFI Network Name.</p>
+            <button onclick="nextStep()">Next</button>
+            <button onclick="previousStep()">Back</button> <!-- Back button for Step 3 -->
+        </div>
+
+        <div class="step" id="step4" style="display:none;">
+            <h2>Step 4: Setup Instructions</h2>
+            <p>Tap on New System Setup and follow the onscreen instructions.</p>
+            <ol>
+                <li>Reboot your Modem - Tap on Next</li>
+                <li>Connect your Router - Check the ethernet cable from Modem to Router
+                    <span class="tip"> (Tips: From WAN Port to Internet port of your router which will be Yellow colour port)</span> - Tap on Next
+                </li>
+                <li>Connect to Router's WIFI (WIFI Network Name (SSID) and Network Key (Password)
+                    <span class="tip">(Tips: Please do not change the WIFI network name and password, leave it as default. Later you can change the SSID name and Password from the APP itself or the device will be disconnected from the default settings and you have to reconnect to the new SSID name and Password.)</span> - Tap on Next
+                </li>
+                <li>On the Nighthawk App you will see Router Detected
+                    <ol>
+                        <li>Cables Connected</li>
+                        <li>Internet Connected</li>
+                    </ol>
+                    Tap on Next
+                </li>
+                <li>Next screen will show as Router is now active. Let's personalize your network settings.</li>
+                <li>Create WIFI Network - Personalize your Wifi network name (SSID) and Password. Leave it as default. Select - Use the same password for Admin Login - Enable this option - Tap on Next</li>
+                <li>Setup Security questions - To recover your Admin password, set security questions and answers - Tap on Next</li>
+                <li>Applying Configuration - Wait while we are updating your router settings
+                    <span class="tip">(Tips: Please do not change the WIFI network name and password, leave it as default. Later you can change the SSID name and Password from the APP itself or the device will be disconnected from the default settings and you have to reconnect to the new SSID name and Password.)</span>
+                </li>
+                <li>Checking for Firmware Update - Wait about 2 minutes while your router checks for new firmware
+                    <span class="tip">(Tips: If there is a new firmware version available, please read the release notes before you initiate the firmware update.)</span>
+                </li>
+                <li>Setup Completed - Congratulations your router is now ready to use. Tap on Finish</li>
+            </ol>
+            <button onclick="nextStep()">Next</button>
+            <button onclick="previousStep()">Back</button> <!-- Back button for Step 4 -->
+        </div>
+
+        <div class="step" id="step5" style="display:none;">
+            <h2>Step 5: Final Check</h2>
+            <p>Please ask your customer to click on a new tab to check whether your customer is able to access the internet.</p>
+            <button onclick="nextStep()">Next</button>
+            <button onclick="previousStep()">Back</button> <!-- Back button for Step 5 -->
+        </div>
+
+        <div class="step" id="step6" style="display:none;">
+            <h2>Step 6: Internet Access Confirmation</h2>
+            <p>Yes, able to access the internet.</p>
+            <button onclick="nextStep()">Next</button>
+            <button onclick="previousStep()">Back</button> <!-- Back button for Step 6 -->
+        </div>
+
+        <div class="step" id="step7" style="display:none;">
+            <h2>Step 7: Firmware Education</h2>
+            <p>Need to educate the customer regarding the ongoing issue with the latest firmware. Need to downgrade the firmware.</p>
+            <button onclick="handleFinishStep()">Finish Setup</button> <!-- Updated button text -->
+            <button onclick="previousStep()">Back</button> <!-- Back button for Step 7 -->
+        </div>
+    </div>
+
+    <!-- Summary Notes Section -->
+    <div id="summary">
+        <h2>Setup Summary Notes</h2>
+        <div id="summaryContent"></div>
+    </div>
+
+    <script>
+        let currentStep = 0; // Track the current step
+        const steps = document.querySelectorAll('.step'); // Get all steps
+
+        // Track which troubleshooting steps have been taken
+        let troubleshootingSteps = {
+            step1: false,
+            step2: false,
+            step4: false,
+            step7: false,
+        };
+
+        function proceedToStep2() {
+            document.getElementById('step1').style.display = 'none'; // Hide Step 1
+            document.getElementById('troubleshooting1').style.display = 'none'; // Ensure troubleshooting box is hidden
+            currentStep = 1; // Set current step to Step 2
+            steps[currentStep].style.display = 'block'; // Show Step 2
+        }
+
+        function showTroubleshootingStep1() {
+            document.getElementById('troubleshooting1').style.display = 'block'; // Show troubleshooting box for Step 1
+            troubleshootingSteps.step1 = true; // Mark step 1 troubleshooting as done
+        }
+
+        function showConnectionInstructions() {
+            document.getElementById('connectionInstructions').style.display = 'block'; // Show connection instructions for Step 2
+            troubleshootingSteps.step2 = true; // Mark instruction hint as shown
+        }
+
+        function nextStep() {
+            if (currentStep < steps.length - 1) {
+                steps[currentStep].style.display = 'none'; // Hide current step
+                currentStep++; // Move to the next step
+                steps[currentStep].style.display = 'block'; // Show next step
+            }
+            // Hide troubleshooting if moving beyond Step 2
+            if (currentStep >= 1) {
+                document.getElementById('troubleshooting1').style.display = 'none';
+                document.getElementById('connectionInstructions').style.display = 'none'; // Hide connection instructions when moving forward
+            }
+            // Add handling for specific steps if they have troubleshooting options
+            if (currentStep === 6) {
+                updateSummary();
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 0) {
+                steps[currentStep].style.display = 'none'; // Hide current step
+                currentStep--; // Move to the previous step
+                steps[currentStep].style.display = 'block'; // Show previous step
+            }
+        }
+
+        function handleFinishStep() {
+            updateSummary(); // Update summary when finishing setup
+            document.getElementById('summary').style.display = 'block'; // Show summary
+            alert('Setup complete! Please ensure to assist the customer with downgrading the firmware if necessary.'); // Placeholder for functionality when finishing the setup
+        }
+
+        function updateSummary() {
+            const summaryContent = document.getElementById('summaryContent');
+            summaryContent.innerHTML = `
+                <p>Step 1: Ask your customer to download and install the Nighthawk App - ${troubleshootingSteps.step1 ? 'Troubleshooting Completed' : 'Completed'}</p>
+                <p>Step 2: Ask your customer to connect to Wi-Fi - ${troubleshootingSteps.step2 ? 'Troubleshooting Completed' : 'Completed'}</p>
+                <p>Step 3: Confirm connection to Wi-Fi - Completed</p>
+                <p>Step 4: Setup Instructions - ${troubleshootingSteps.step4 ? 'Troubleshooting Completed' : 'Completed'}</p>
+                <p>Step 5: Final Check - Completed</p>
+                <p>Step 6: Internet Access Confirmation - Completed</p>
+                <p>Step 7: Firmware Education - Need to educate the customer regarding the ongoing issue with the latest firmware - Completed</p>
+            `;
+        }
+    </script>
+</body>
+</html>
